@@ -1,4 +1,6 @@
+import {IUser} from "../../User/interface/user.interface";
+
 export interface IAuth {
-    email: string;
-    password: string;
+    user: IUser;
+    access_token: string;
 }

@@ -1,12 +1,10 @@
-import { genSaltSync, hashSync } from 'bcryptjs'
+import {genSaltSync, hashSync} from 'bcryptjs'
 
 async function encryptPasswod(password: string):Promise<string> {
 
     const salt = await genSaltSync(10)
 
-    const hashPassword = await hashSync(password, salt)
-
-    return hashPassword
+    return hashSync(password, salt);
 }
 
 export { encryptPasswod }
