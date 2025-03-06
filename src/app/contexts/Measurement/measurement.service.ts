@@ -3,6 +3,7 @@ import {CreateMeasurementDto} from "./dto/create-measurement.dto";
 import {MomentService} from "../Moment/moment.service";
 import {Exception} from "../../middlewares/exception.middleware";
 import HttpStatus from 'http-status-codes';
+import {MeasurementFactory} from "./measurement.factory";
 
 class MeasurementService {
     private measurementRepository: MeasurementRepository;
@@ -24,8 +25,10 @@ class MeasurementService {
             throw new Exception("No moment found.", HttpStatus.BAD_REQUEST);
         }
 
+        const converterData = MeasurementFactory.converterData(data)
 
-        return this.measurementRepository.create(data)
+
+        return this.measurementRepository.create(converterData)
     }
 }
 

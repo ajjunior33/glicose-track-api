@@ -1,5 +1,5 @@
 import {database} from "../../../database/index.database";
-import {CreateMeasurementDto} from "./dto/create-measurement.dto";
+import {CreateMeasurementDto, CreateMeasurementFactoryDto} from "./dto/create-measurement.dto";
 
 class MeasurementRepository {
 
@@ -14,19 +14,19 @@ class MeasurementRepository {
     public async create({
                             level,
                             date,
-                            moment,
+                            momentId,
                             time,
                             note,
                             rapidInsulin,
                             slowInsulin,
                             userId
-    }: CreateMeasurementDto) {
+    }: CreateMeasurementFactoryDto) {
         return database.measurement.create({
             data: {
                 level,
                 date,
-                userId: Number(userId),
-                momentId: Number(moment),
+                userId,
+                momentId,
                 time,
                 note,
                 rapidInsulin,

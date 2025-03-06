@@ -7,6 +7,6 @@ const measurementController = new MeasurementController();
 const measurementRoutes = Router();
 
 measurementRoutes.get("/", AuthenticateMiddleware, measurementController.index);
-measurementRoutes.get("/", AuthenticateMiddleware, measurementController.store);
+measurementRoutes.post("/", AuthenticateMiddleware, measurementController.store);
 
 export { measurementRoutes}
