@@ -1,12 +1,16 @@
 import {database} from "../../../database/index.database";
 import {CreateMeasurementDto, CreateMeasurementFactoryDto} from "./dto/create-measurement.dto";
+import {Measurement, Moment} from "@prisma/client";
 
 class MeasurementRepository {
 
-    public async list(userId: string){
+    public async list(userId: string):  Promise<({moment: Moment} & Measurement)[]>{
         return database.measurement.findMany({
             where :{
                 userId: Number(userId)
+            },
+            include:{
+                moment: true,
             }
         });
     }

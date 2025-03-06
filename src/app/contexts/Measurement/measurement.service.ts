@@ -15,7 +15,9 @@ class MeasurementService {
     }
 
     public async list(userId: string){
-        return this.measurementRepository.list(userId)
+        const data = await this.measurementRepository.list(userId)
+
+        return MeasurementFactory.converterToReturn(data);
     }
 
     public async create(data: CreateMeasurementDto) {
