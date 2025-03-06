@@ -8,7 +8,7 @@ import {momentRoutes} from "../contexts/Moment/moment.routes";
 const routes = Router();
 
 
-routes.get("/", (_: Request, response: Response) => {
+routes.get("/health", (_: Request, response: Response) => {
     response.status(200).json({
         message: "OK"
     })

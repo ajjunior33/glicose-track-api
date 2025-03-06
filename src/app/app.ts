@@ -3,6 +3,7 @@ import express, {Request, Response, NextFunction} from 'express';
 import pino from 'pino';
 import {Exception} from "./middlewares/exception.middleware";
 import {routes} from "./routes/index.route";
+import morgan from 'morgan';
 
 const app = express();
 
@@ -16,7 +17,7 @@ app.use(express.json())
 
 app.use("/api", routes);
 
-
+app.use(morgan('dev'));
 
 
 app.use("*", (req: Request, res: Response) => {
