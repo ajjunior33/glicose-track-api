@@ -4,6 +4,9 @@ import pino from 'pino';
 import {Exception} from "./middlewares/exception.middleware";
 import {routes} from "./routes/index.route";
 import morgan from 'morgan';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
 

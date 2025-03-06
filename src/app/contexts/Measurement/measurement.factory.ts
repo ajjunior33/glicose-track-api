@@ -11,8 +11,8 @@ class MeasurementFactory {
         return {
             level: data.level,
             date: this.dateToISO(data.date),
-            userId: Number(data.userId),
-            momentId: Number(data.moment),
+            userId: data.userId,
+            momentId: data.moment,
             time: data.time,
             note: data.note,
             rapidInsulin: data.rapidInsulin,

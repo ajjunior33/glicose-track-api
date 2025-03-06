@@ -12,10 +12,10 @@ export interface CreateMeasurementDto {
 export interface CreateMeasurementFactoryDto {
     level: string;
     date: Date;
-    momentId: number;
+    momentId: string;
     time: string;
     note: string;
     rapidInsulin: string;
     slowInsulin: string;
-    userId: number;
+    userId: string;
 }

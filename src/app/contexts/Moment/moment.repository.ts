@@ -14,7 +14,7 @@ class MomentRepository{
         })
     }
 
-    public async findById(id: number) {
+    public async findById(id: string) {
         return database.moment.findFirst({
             where: {
                 id
@@ -22,7 +22,7 @@ class MomentRepository{
         })
     }
 
-    public async destroy(id: number) {
+    public async destroy(id: string) {
         return database.moment.delete({
             where: {
                 id

@@ -18,20 +18,18 @@ class MomentService{
     }
 
     public async destroyMoment(id: string){
-        const convertIdToNumber = Number(id);
-        const moment = await this.momentRepository.findById(convertIdToNumber);
+
+        const moment = await this.momentRepository.findById(id);
 
         if(!moment){
             throw new Exception("Moment not found!", HttpStatus.NOT_FOUND);
         }
 
-        return await this.momentRepository.destroy(convertIdToNumber)
+        return await this.momentRepository.destroy(id)
     }
 
     public async findById(id: string){
-        const convertIdToNumber = Number(id);
-
-        return await this.momentRepository.findById(convertIdToNumber);
+        return await this.momentRepository.findById(id);
     }
 }
 

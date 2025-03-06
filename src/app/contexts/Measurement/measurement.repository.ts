@@ -7,7 +7,7 @@ class MeasurementRepository {
     public async list(userId: string):  Promise<({moment: Moment} & Measurement)[]>{
         return database.measurement.findMany({
             where :{
-                userId: Number(userId)
+                userId: userId
             },
             include:{
                 moment: true,
