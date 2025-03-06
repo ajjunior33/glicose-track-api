@@ -27,6 +27,12 @@ class MomentService{
 
         return await this.momentRepository.destroy(convertIdToNumber)
     }
+
+    public async findById(id: string){
+        const convertIdToNumber = Number(id);
+
+        return await this.momentRepository.findById(convertIdToNumber);
+    }
 }
 
 export {MomentService}

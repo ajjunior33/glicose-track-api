@@ -26,7 +26,7 @@ class MeasurementRepository {
                 level,
                 date,
                 userId: Number(userId),
-                moment,
+                momentId: Number(moment),
                 time,
                 note,
                 rapidInsulin,
