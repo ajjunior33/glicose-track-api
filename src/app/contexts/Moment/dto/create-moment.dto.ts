@@ -1,0 +1,3 @@
+interface CreateMomentDto {
+    name: string;
+}

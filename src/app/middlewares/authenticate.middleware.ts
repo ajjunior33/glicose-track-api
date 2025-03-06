@@ -7,24 +7,27 @@ const AuthenticateMiddleware = async (request: Request, response: Response, next
     const authHeader = request.headers.authorization;
 
     if (!authHeader) {
-        return response.status(HttpStatus.UNAUTHORIZED).json({
+        response.status(HttpStatus.UNAUTHORIZED).json({
             message: "Você precisa informar um token."
         });
+        return;
     }
 
     const parts = authHeader.split(" ");
     if (parts.length !== 2) {
-        return response.status(HttpStatus.UNAUTHORIZED).json({
+        response.status(HttpStatus.UNAUTHORIZED).json({
             message: "Token inválido."
         });
+        return;
     }
 
     const [schema, token] = parts;
 
     if (!/^Bearer$/i.test(schema)) {
-        return response.status(HttpStatus.UNAUTHORIZED).json({
+        response.status(HttpStatus.UNAUTHORIZED).json({
             message: "Token mal formatado."
         });
+        return;
     }
 
 
@@ -32,12 +35,15 @@ const AuthenticateMiddleware = async (request: Request, response: Response, next
 
     if (decoded) {
         request.userId = decoded.sub as string;
-        return next();
+        next();
+
+        return;
     }
 
-    return response.status(HttpStatus.UNAUTHORIZED).json({
+    response.status(HttpStatus.UNAUTHORIZED).json({
         message: "Não foi possível autenticar o usuário."
     });
+    return;
 
 
 }
